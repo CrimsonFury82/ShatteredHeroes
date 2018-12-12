@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdeb0efe8b2a724c916aeb82c72d2cb, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: 
+  cardName: Skeleton
+  ability1: Bones
+  ability2: 
+  hp: 2
+  artSprite: {fileID: 21300000, guid: c07a7687e0e6c884e9ac00ecd206b2ba, type: 3}
+  attack: 2
+  cooldown: 1
