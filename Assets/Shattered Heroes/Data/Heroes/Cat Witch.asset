@@ -15,4 +15,5 @@ MonoBehaviour:
   ability1: Meow
   ability2: 
   hp: 30
-  artSprite: {fileID: 21300000, guid: 1b92a25562d9f8047af9e339172a6a42, type: 3}
+  artSprite: {fileID: 21300000, guid: 167d0fda385d00b41a50780d588da9b1, type: 3}
+  audio1: {fileID: 0}

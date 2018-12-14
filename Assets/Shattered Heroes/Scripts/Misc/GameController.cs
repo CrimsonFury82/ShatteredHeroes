@@ -14,23 +14,27 @@ public class GameController : MonoBehaviour {
 
     int p1HP = 99, p2HP = 99, turnsRemaining = 21, defenderHeroHP;
 
-    public GameObject p1HandObject, GameOverObject, P1Hero, P2Hero;
+    public GameObject p1HandObject, GameOverObject;
 
     GameObject attackTarget;
     
     public Text turnText, p1DeckText, p2DeckText, p1HandText, p2HandText, p1HealthText, p2HealthText, gameoverText; //UI text
 
-    public Transform p1BattleTransform, p2BattleTransform, p1HandTransform, p2HandTransform, handTransform, battleTransform; //Board areas for each players cards
+    public Transform p1BattleTransform, p2BattleTransform, p1HandTransform, p2HandTransform, handTransform, battleTransform, p1HeroTransform, p2HeroTransform; //Board areas for each players cards
 
     public List<MonsterCardData> p1Deck, p2Deck, deckList, p1Hand, p2Hand, handList; //lists for the carddata of each decks and hand
 
-    public List<GameObject> p1LiveMonsters, p2LiveMonsters, deadMonsters, attackers, defenders; //lists for the card prefabs on the board and dead cards
+    public List<GameObject> p1LiveMonsters, p2LiveMonsters, deadMonsters, attackers, defenders, liveHeroes; //lists for the card prefabs on the board and dead cards
+
+    public List<HeroCardData> heroDeck;
+
+    public AnimationController animationController;
 
     public MonsterCardUI monsterCardTemplate; //card prefab
 
-    MonsterCardUI monsterCardUI; //script
+    public HeroCardUI heroCardTemplate;
 
-    public AnimationController animationController;
+    MonsterCardUI monsterCardUI; //script
 
     MonsterCardData topDeckCard;
             
@@ -69,6 +73,8 @@ public class GameController : MonoBehaviour {
     void BeginGame() //function for start of game.
     {
         HeroHPUIUpdate(); //updates UI text
+        DealHero(heroDeck[0], p1HeroTransform);
+        DealHero(heroDeck[1], p2HeroTransform);
         DealCard(p1Deck[0], p1Deck, p1HandTransform, p1Hand); //deals card to P1
         DealCard(p1Deck[0], p1Deck, p1HandTransform, p1Hand); //deals card to P1
         DealCard(p2Deck[0], p2Deck, p2HandTransform, p2Hand); //deals card to P2
@@ -109,7 +115,7 @@ public class GameController : MonoBehaviour {
         if (turnState == turn.Player1) //checks if currently Player 1's turn
         {
             turnState = turn.Player2;
-            attackTarget = P1Hero;
+            attackTarget = liveHeroes[0];
             deckList = p2Deck;
             handTransform = p2HandTransform;
             handList = p2Hand;
@@ -131,7 +137,7 @@ public class GameController : MonoBehaviour {
         else if (turnState == turn.Player2) //checks if currently Player 2's turn
         {
             turnState = turn.Player1;
-            attackTarget = P2Hero;
+            attackTarget = liveHeroes[1];
             deckList = p1Deck;
             handTransform = p1HandTransform;
             handList = p1Hand;
@@ -180,6 +186,15 @@ public class GameController : MonoBehaviour {
         {
             StartCoroutine(CombatPhase(attackers, defenders, defenderHeroHP)); //calls attack function
         }
+    }
+
+    public void DealHero(HeroCardData hero, Transform heroTransform)
+    {
+        HeroCardData card = Instantiate(hero);
+        HeroCardUI tempCard = Instantiate(heroCardTemplate); //instantiates an instance of the card prefab
+        tempCard.transform.SetParent(heroTransform.transform, false); //moves card 
+        tempCard.heroCardData = card;
+        liveHeroes.Add(tempCard.gameObject);
     }
 
     public void DealCard(MonsterCardData topDeckCard, List<MonsterCardData> deckList, Transform handTransform, List<MonsterCardData> handList) //deals card to Player
@@ -237,6 +252,7 @@ public class GameController : MonoBehaviour {
             {
                 MonsterCardUI attacker = attackers[i].GetComponent<MonsterCardUI>();
                 animationController.AttackStart(attackers[i], attackTarget);
+                attacker.PlaySound();
                 defenderHeroHP -= attacker.monsterCardData.attack;
             }
         }
@@ -250,7 +266,11 @@ public class GameController : MonoBehaviour {
         }
 
         HeroHPUIUpdate();
-        MonsterBattlePhase(attackers, defenders);
+
+        if (defenders.Count > 0)
+        {
+            MonsterBattlePhase(attackers, defenders);
+        }
 
         if (defenderHeroHP <= 0) //checks if hero is dead
         {
@@ -288,6 +308,7 @@ public class GameController : MonoBehaviour {
             MonsterCardUI monsterAttacker = attackers[i].GetComponent<MonsterCardUI>();
             MonsterCardUI monsterDefender = defenders[i].GetComponent<MonsterCardUI>();
             animationController.AttackStart(attackers[i], defenders[i]);
+            monsterAttacker.PlaySound();
             monsterDefender.monsterCardData.hp -= monsterAttacker.monsterCardData.attack; //deals damage
             monsterDefender.hpText.text = monsterDefender.monsterCardData.hp.ToString(); //updates UI HP text
             if (monsterDefender.monsterCardData.hp <= 0) //checks if monster is dead

@@ -13,9 +13,9 @@ public class MonsterCardUI : BaseCardUI
 
     public Button button;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
-    public AudioClip cardSound;
+    public AudioClip cardPlayedSound;
 
     GameObject card; 
 
@@ -41,7 +41,14 @@ public class MonsterCardUI : BaseCardUI
 
     public void PlayClickedCard(GameObject tempCard) //plays the clicked card from your hand area to the battlezone
     {
-        audioSource.PlayOneShot(cardSound);
+        //audioSource.PlayOneShot(cardPlayedSound);
         gameController.PlayCard(this.gameObject, monsterCardData, button, audioSource);
+    }
+
+    public void PlaySound()
+    {
+        audioSource = GetComponent<AudioSource>();
+        AudioClip attackSound = monsterCardData.audio1;
+        audioSource.PlayOneShot(attackSound);
     }
 }

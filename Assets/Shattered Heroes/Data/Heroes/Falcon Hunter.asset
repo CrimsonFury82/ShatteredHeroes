@@ -15,4 +15,5 @@ MonoBehaviour:
   ability1: Squawk
   ability2: 
   hp: 30
-  artSprite: {fileID: 21300000, guid: 432a0d6440f2bb548be11ec1e513bf3a, type: 3}
+  artSprite: {fileID: 21300000, guid: db180239bc565ea4aa30fdc92cbbc4d3, type: 3}
+  audio1: {fileID: 0}

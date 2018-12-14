@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CardBattlerScene.unity
+    path: Assets/Scenes/MenuScene.unity
+    guid: e8dd0424f4f19424185f0b1398105964
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
     guid: fc46f8950b1fc72468199ba14bb2af85
   - enabled: 1
-    path: Assets/Scenes/CardLooterScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/CreditsScene.unity
+    guid: ca68516a9a85c8d40abea2a63839fce8
   m_configObjects: {}

@@ -9,7 +9,6 @@ public class HeroCardUI : BaseCardUI
 
     void Start()
     {
-        //HeroCardData card = Instantiate(heroCardData);
         UIHeroCard(cardNameText, ability1Text, ability2Text, hpText, artImage);
     }
 
