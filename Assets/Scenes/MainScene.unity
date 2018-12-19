@@ -1987,11 +1987,13 @@ MonoBehaviour:
   p1Deck:
   - {fileID: 11400000, guid: 09494f17999fb0f4d9356195a9c17240, type: 2}
   - {fileID: 11400000, guid: cea5b9237f837e64bb30ec0a968e1076, type: 2}
-  - {fileID: 11400000, guid: 1742ed638dd23d5428ec5c4d725989bc, type: 2}
+  - {fileID: 11400000, guid: 6738637cbad01464496c002ed0fde069, type: 2}
+  - {fileID: 11400000, guid: 41ed0ff6241d4df40a3b8a86288eabea, type: 2}
   p2Deck:
-  - {fileID: 11400000, guid: 1b64643799fb47b47a965f8797551b3b, type: 2}
-  - {fileID: 11400000, guid: 6d701a804e5344641bb2a185bc992203, type: 2}
   - {fileID: 11400000, guid: 38898493e155c98489edb8859ff99f08, type: 2}
+  - {fileID: 11400000, guid: 17aa31ae8c0807d44a4f270fd6b722fb, type: 2}
+  - {fileID: 11400000, guid: 217a16e7106542b44988ad4b84d8e569, type: 2}
+  - {fileID: 11400000, guid: fb119ee67c809c14690c2110037d3c76, type: 2}
   deckList: []
   p1Hand: []
   p2Hand: []
@@ -2261,6 +2263,7 @@ GameObject:
   - component: {fileID: 1288424250}
   - component: {fileID: 1288424249}
   - component: {fileID: 1288424248}
+  - component: {fileID: 1288424251}
   m_Layer: 5
   m_Name: P2HeroZone
   m_TagString: Untagged
@@ -2283,7 +2286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1640, y: -428}
+  m_AnchoredPosition: {x: 1723.3, y: -555}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1288424248
@@ -2343,6 +2346,28 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1288424251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1288424246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
 --- !u!1 &1325588984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,7 +2402,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 620, y: -150}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325588986
 MonoBehaviour:
@@ -2587,7 +2612,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -620.06, y: -150}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671919987
 MonoBehaviour:
@@ -2726,6 +2751,7 @@ GameObject:
   - component: {fileID: 1931791371}
   - component: {fileID: 1931791370}
   - component: {fileID: 1931791369}
+  - component: {fileID: 1931791372}
   m_Layer: 5
   m_Name: P1HeroZone
   m_TagString: Untagged
@@ -2748,7 +2774,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105, y: -428}
+  m_AnchoredPosition: {x: 185, y: -555}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931791369
@@ -2808,3 +2834,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1931791372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1931791367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
