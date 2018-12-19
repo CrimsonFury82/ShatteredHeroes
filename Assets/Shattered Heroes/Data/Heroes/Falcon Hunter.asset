@@ -14,6 +14,12 @@ MonoBehaviour:
   cardName: Falcon Hunter
   ability1: Squawk
   ability2: 
-  hp: 30
+  hp: 99
   artSprite: {fileID: 21300000, guid: db180239bc565ea4aa30fdc92cbbc4d3, type: 3}
-  audio1: {fileID: 0}
+  audio1: {fileID: 8300000, guid: 120eaeed128353048abc748033a0426e, type: 3}
+  artSprite2: {fileID: 21300000, guid: 42316c3001d4c4b40a51e011e0c21e40, type: 3}
+  artSprite3: {fileID: 21300000, guid: 3c84e96af77f13f4286d79ef3b9b8c5f, type: 3}
+  artSprite4: {fileID: 21300000, guid: 9aa7deadb647aef43aff9dee0d8b82df, type: 3}
+  audio2: {fileID: 8300000, guid: 490e69f4e7341524fa2db3af41685b6d, type: 3}
+  audio3: {fileID: 8300000, guid: bba50862d3ea90940ae617171da61c05, type: 3}
+  audio4: {fileID: 8300000, guid: acf24358759cc6944b3a3fad6beab7e6, type: 3}

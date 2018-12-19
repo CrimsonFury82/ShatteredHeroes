@@ -3,17 +3,10 @@ using System.Collections;
 
 public class AnimationController : MonoBehaviour
 {
-    float animationLength = 1f;
-
     public GameController gameController;
 
     GameObject attacker, defender;
     
-    public void AttackStart(GameObject attacker, GameObject defender)
-    {
-        StartCoroutine(AttackMove(attacker, defender, animationLength));
-    }
-
     public IEnumerator AttackMove(GameObject attacker, GameObject defender, float duration) //function for animating movement of attacking card
     {
         Vector3 startPos, targetPos;
@@ -24,16 +17,16 @@ public class AnimationController : MonoBehaviour
 
         if (gameController.turnPhase == GameController.phase.CombatPhase & attacker != null & defender != null) //checks it is combat phase and card hasn't attacked already
         {
-            while (moveElapsed < animationLength) //checks if time passed is less than animation length
+            while (moveElapsed < duration) //checks if time passed is less than animation length
             {
-                moveElapsed = Mathf.Min(moveElapsed + (Time.deltaTime / duration), animationLength);
+                moveElapsed = Mathf.Min(moveElapsed + (Time.deltaTime / duration), duration);
                 attacker.transform.position = Vector3.Lerp(startPos, targetPos, moveElapsed);
                 yield return null;
             }
 
-            while (returnElapsed < animationLength & moveElapsed >= animationLength)
+            while (returnElapsed < duration& moveElapsed >= duration)
             {
-                returnElapsed = Mathf.Min(returnElapsed + (Time.deltaTime / duration), animationLength);
+                returnElapsed = Mathf.Min(returnElapsed + (Time.deltaTime / duration), duration);
                 attacker.transform.position = Vector3.Lerp(targetPos, startPos, returnElapsed);
                 yield return null;
             }

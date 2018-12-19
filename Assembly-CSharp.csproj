@@ -64,9 +64,9 @@
     <Compile Include="Assets\Shattered Heroes\Scripts\Card Data\BaseCardData.cs" />
     <Compile Include="Assets\Shattered Heroes\Scripts\Card Data\HeroCardData.cs" />
     <Compile Include="Assets\Shattered Heroes\Scripts\Card Data\MonsterCardData.cs" />
-    <Compile Include="Assets\Shattered Heroes\Scripts\CardUI\BaseCardUI.cs" />
-    <Compile Include="Assets\Shattered Heroes\Scripts\CardUI\HeroCardUI.cs" />
-    <Compile Include="Assets\Shattered Heroes\Scripts\CardUI\MonsterCardUI.cs" />
+    <Compile Include="Assets\Shattered Heroes\Scripts\CardUI\BaseCardPrefab.cs" />
+    <Compile Include="Assets\Shattered Heroes\Scripts\CardUI\HeroCardPrefab.cs" />
+    <Compile Include="Assets\Shattered Heroes\Scripts\CardUI\MonsterCardPrefab.cs" />
     <Compile Include="Assets\Shattered Heroes\Scripts\Misc\AnimationController.cs" />
     <Compile Include="Assets\Shattered Heroes\Scripts\Misc\CardKeywords.cs" />
     <Compile Include="Assets\Shattered Heroes\Scripts\Misc\GameController.cs" />

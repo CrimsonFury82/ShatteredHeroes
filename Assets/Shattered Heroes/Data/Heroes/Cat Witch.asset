@@ -14,6 +14,12 @@ MonoBehaviour:
   cardName: Cat Witch
   ability1: Meow
   ability2: 
-  hp: 30
+  hp: 99
   artSprite: {fileID: 21300000, guid: 167d0fda385d00b41a50780d588da9b1, type: 3}
-  audio1: {fileID: 0}
+  audio1: {fileID: 8300000, guid: 9c370c3b7ba220447bccff963d61c268, type: 3}
+  artSprite2: {fileID: 21300000, guid: 3216ffb40d556dd4cb05dfde7a54285c, type: 3}
+  artSprite3: {fileID: 21300000, guid: ff3c91f5cedfbde4eb3cc411e076339d, type: 3}
+  artSprite4: {fileID: 21300000, guid: ecf551d9f3faf09439b9ecefd51b334e, type: 3}
+  audio2: {fileID: 8300000, guid: 9aff9063f5b10094695791d33a81fbc8, type: 3}
+  audio3: {fileID: 8300000, guid: 4b6afa5922a89a947b32f4cb519bed1b, type: 3}
+  audio4: {fileID: 8300000, guid: b7b6fde9dc6897448be234b16fea5e88, type: 3}

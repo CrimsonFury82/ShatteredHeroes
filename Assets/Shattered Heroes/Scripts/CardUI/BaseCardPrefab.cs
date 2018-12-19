@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
-public abstract class BaseCardUI : MonoBehaviour
+public abstract class BaseCardPrefab : MonoBehaviour
 {
     BaseCardData baseCardData;
     

@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Name: Gremlin
   m_EditorClassIdentifier: 
   cardName: Gremlin Kid
-  ability1: 
+  ability1: Hehehe
   ability2: 
-  hp: 30
+  hp: 99
   artSprite: {fileID: 21300000, guid: 661580c4a69cc8e4487807166329ba76, type: 3}
-  audio1: {fileID: 0}
+  audio1: {fileID: 8300000, guid: 66ec6451c9700dc4790c64ff1e8498a9, type: 3}
+  artSprite2: {fileID: 21300000, guid: 3b8f92c95e30b424eae5b3e0c51a5f28, type: 3}
+  artSprite3: {fileID: 21300000, guid: 1d3a588d99000dc40968805dacabb87a, type: 3}
+  artSprite4: {fileID: 21300000, guid: aa6248caff7108142a55bbfd972bf81c, type: 3}
+  audio2: {fileID: 8300000, guid: 74cef11526978434da400dd7a863e959, type: 3}
+  audio3: {fileID: 8300000, guid: d00dd31b7541bf746af4c2cd53ca8d42, type: 3}
+  audio4: {fileID: 8300000, guid: c738eabb7441cc34e9ecbb77f3cbca93, type: 3}
