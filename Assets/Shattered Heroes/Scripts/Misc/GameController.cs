@@ -14,11 +14,11 @@ public class GameController : MonoBehaviour {
 
     int turnsRemaining = 20, maxTurns;
 
-    public GameObject p1HandObject, GameOverObject;
+    public GameObject p1HandObject, GameOverObject, GameOverTextObject;
 
     GameObject attackTarget, defenderHero;
     
-    public Text turnText, p1DeckText, p2DeckText, p1HandText, p2HandText, p1HealthText, p2HealthText, gameoverText; //UI text
+    public Text turnText, p1DeckText, p2DeckText, p1HandText, p2HandText, gameoverText; //UI text
 
     public Transform p1BattleTransform, p2BattleTransform, p1HandTransform, p2HandTransform, p1HeroTransform, p2HeroTransform; //Board areas for each players cards
 
@@ -45,6 +45,8 @@ public class GameController : MonoBehaviour {
     MonsterCardPrefab monsterCardPrefab; //script
 
     MonsterCardData topDeckCard;
+
+    bool isPaused;
             
     public void Turns() //function for turn states
     {   switch (turnState)
@@ -80,15 +82,38 @@ public class GameController : MonoBehaviour {
         BeginGame();
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown("escape"))
+        {
+            PauseMenu();
+        }
+    }
+
     public void BeginGame() //function for start of game.
     {
+        isPaused = false;
         maxTurns = turnsRemaining;
+        Shuffle(p1Deck);
+        Shuffle(p2Deck);
         DealHero(heroDeck[0], p1HeroTransform);
         DealHero(heroDeck[1], p2HeroTransform);
         p1Hero = liveHeroes[0].GetComponent<HeroCardPrefab>();
         p2Hero = liveHeroes[1].GetComponent<HeroCardPrefab>();
         P1Turn();
         PhaseUIUpdate();
+    }
+
+    void Shuffle(List<MonsterCardData> deck)
+    {
+        for (int i = 0; i < 500; i++)
+        {
+            int rng1 = Random.Range(0, deck.Count); //rng1 = 50
+            int rng2 = Random.Range(0, deck.Count); //rng2 = 10
+            MonsterCardData tempcard = deck[rng1]; //tempcard = card 50
+            deck[rng1] = deck[rng2]; //card 50 = card 10
+            deck[rng2] = tempcard; //card 10 = card 50
+        }
     }
 
     public void TurnSwap()
@@ -108,14 +133,14 @@ public class GameController : MonoBehaviour {
         PhaseUIUpdate();
     }
 
-    public void P1Turn()
+    public void P1Turn() //player 1 turn
     {
         p1HandObject.SetActive(true);
         TurnUpkeep(turn.Player1, liveHeroes[1], p1Deck, p1HandTransform, p1Hand, p1LiveMonsters, p2LiveMonsters, liveHeroes[1], p1BattleTransform);
         MainPhase();
     }
 
-    public void P2Turn()
+    public void P2Turn() //player 2 turn
     {
         TurnUpkeep(turn.Player2, liveHeroes[0], p2Deck, p2HandTransform, p2Hand, p2LiveMonsters, p1LiveMonsters, liveHeroes[0], p2BattleTransform);
         MainPhase();
@@ -130,7 +155,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void TurnUpkeep(turn currentTurn, GameObject heroObject, List<MonsterCardData> deck, Transform handTrans, List<MonsterCardData> handData, List<GameObject> attackerList, List<GameObject> defenderList, GameObject defHero, Transform battleTrans)
-    {
+    { //sets all paramaters for the relevant player at start of turn
         turnState = currentTurn;
         attackTarget = heroObject;
         deckList = deck;
@@ -156,7 +181,7 @@ public class GameController : MonoBehaviour {
         turnText.text = turnState + " " + turnPhase + ": Turns remaining " + turnsRemaining;
     }
 
-    void MainPhase()
+    void MainPhase() //Deals cards, plays a card for AI player or waits for human player to play a card, then goes to combat phase
     {
         if (turnsRemaining == maxTurns) //checks if deck has cards left
         {
@@ -180,7 +205,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void DealHero(HeroCardData hero, Transform heroTransform)
+    public void DealHero(HeroCardData hero, Transform heroTransform) //Deals hero cards at start of game
     {
         HeroCardData card = Instantiate(hero);
         HeroCardPrefab tempCard = Instantiate(heroCardTemplate); //instantiates an instance of the card prefab
@@ -217,9 +242,7 @@ public class GameController : MonoBehaviour {
 
     public void P2PlayCard() //AI plays a random card
     {
-        //PlayCard(this.gameObject, p1Hand[0],  );
         int rng = Random.Range(0, p2Hand.Count); //generates random number
-        //MonsterCardUI.PlayClickedCard(monsterCard);
         MonsterCardData card = p2Hand[rng]; //assigns the random number to the card to be played.
         MonsterCardPrefab playedCard = Instantiate(monsterCardTemplate); //instantiates an instance of the card
         playedCard.monsterCardData = (MonsterCardData)card; //sets the cards data to the card played from hand
@@ -241,7 +264,7 @@ public class GameController : MonoBehaviour {
         HeroAttackPhase();
     }
 
-    public void HeroAttackPhase()
+    public void HeroAttackPhase() //creatures with no opposing creature attack the enemy hero
     {
         HeroCardPrefab defHero = defenderHero.GetComponent<HeroCardPrefab>();
         if (attackers.Count > defenders.Count) //checks if attack has more monsters than defender
@@ -251,10 +274,23 @@ public class GameController : MonoBehaviour {
                 MonsterCardPrefab attacker = attackers[i].GetComponent<MonsterCardPrefab>();
                 StartCoroutine(animationController.AttackMove(attackers[i], attackTarget, animationLength));
 
-                attacker.PlaySound();
-                defHero.heroCardData.hp -= attacker.monsterCardData.attack;
+                attacker.PlaySound(); //plays sound
+                defHero.heroCardData.hp -= attacker.monsterCardData.attack; //deals damage
                 defHero.hpText.text = defHero.heroCardData.hp.ToString(); //updates UI HP text
                 print(attacker.monsterCardData.cardName + " deals " + attacker.monsterCardData.attack + " to defending hero");
+
+                if (defHero.heroCardData.hp <= 66)
+                {
+                    defHero.heroCardData.HeroArtUpdate(defHero, defHero.heroCardData.artSprite2);
+                }
+                if (defHero.heroCardData.hp <= 33)
+                {
+                    defHero.heroCardData.HeroArtUpdate(defHero, defHero.heroCardData.artSprite3);
+                }
+                if (defHero.heroCardData.hp <= 0)
+                {
+                    defHero.heroCardData.HeroArtUpdate(defHero, defHero.heroCardData.artSprite4);
+                }
             }
             if (turnState == turn.Player1) //checks if currently Player 1's turn
             {
@@ -288,7 +324,7 @@ public class GameController : MonoBehaviour {
         Invoke("TurnSwap", endTurnDelay);
     }
 
-    public void MonsterBattlePhase(List<GameObject> attackers, List<GameObject> defenders) //Player 1 monsters attack
+    public void MonsterBattlePhase(List<GameObject> attackers, List<GameObject> defenders) //creatures with an opposing monster fight each other
     {
         int monsterCombatants;
 
@@ -322,21 +358,37 @@ public class GameController : MonoBehaviour {
         deadMonsters.Clear();
     }
 
+    void PauseMenu() //opens a menu to quit or restart
+    {
+        if(isPaused == false)
+        {
+            isPaused = true;
+            GameOverObject.SetActive(true);
+        }
+        else
+        {
+            isPaused = false;
+            GameOverObject.SetActive(false);
+        }
+    }
+
     public void GameOver() //function for when the game has ended
     {
+        GameOverObject.SetActive(true); //enables gameover menu
+        GameOverTextObject.SetActive(true); //enables gameover text
         if (turnsRemaining == 0) //checks if number of turns has reached max turns
         {
             if (p1Hero.heroCardData.hp < p2Hero.heroCardData.hp) //checks if p1 has less health
             {
-                P2Wins();
+                GameOverMessage("Game Over, Player2 Wins");
             }
             if (p2Hero.heroCardData.hp < p1Hero.heroCardData.hp) //checks if p2 has less health
             {
-                P1Wins();
+                GameOverMessage("Game Over, Player1 Wins");
             }
             if (p1Hero.heroCardData.hp == p2Hero.heroCardData.hp) //checks if health is tied
             {
-                Draw();
+                GameOverMessage("Game Over, Tied Game");
             }
             else
             {
@@ -347,30 +399,17 @@ public class GameController : MonoBehaviour {
         {
             if (p1Hero.heroCardData.hp <= 0) //checks if Player1 is dead
             {
-                P2Wins();
+                GameOverMessage("Game Over, Player2 Wins");
             }
             if (p2Hero.heroCardData.hp <= 0) //checks if Player2 is dead
             {
-                P1Wins();
+                GameOverMessage("Game Over, Player1 Wins");
             }
         }
     }
 
-    public void P1Wins()
+    public void GameOverMessage(string winText) //updates game over UI text
     {
-        GameOverObject.SetActive(true);
-        gameoverText.text = "Game Over, Player1 Wins";
-    }
-
-    public void P2Wins()
-    {
-        GameOverObject.SetActive(true);
-        gameoverText.text = "Game Over, Player2 Wins";
-    }
-
-    public void Draw()
-    {
-        GameOverObject.SetActive(true);
-        gameoverText.text = "Game Over, Tied Game";
+        gameoverText.text = winText;
     }
 }

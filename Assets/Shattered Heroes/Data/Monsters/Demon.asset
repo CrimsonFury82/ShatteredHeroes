@@ -14,7 +14,7 @@ MonoBehaviour:
   cardName: Demon
   ability1: Grrr
   ability2: 
-  hp: 3
+  hp: 5
   artSprite: {fileID: 21300000, guid: 0869735f42d5a704c85dabd6f706e587, type: 3}
   audio1: {fileID: 8300000, guid: d6169fed8a594314db30b646ecdab9d4, type: 3}
   attack: 5

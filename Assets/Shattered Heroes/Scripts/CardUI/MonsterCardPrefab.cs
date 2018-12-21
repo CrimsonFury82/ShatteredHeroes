@@ -24,9 +24,9 @@ public class MonsterCardPrefab : BaseCardPrefab
         UIMonsterCard(attackText, cooldownText); //calls the UI function to update card text
     }
 
-    void UIMonsterCard(Text attack, Text cooldown)
+    void UIMonsterCard(Text attack, Text cooldown) 
     {
-        monsterCardData.BaseCardUpdate(cardNameText, ability1Text, ability2Text, hpText, artImage); //updates prefab with values from scriptable object
+        monsterCardData.BaseCardUpdate(cardNameText, ability1Text, ability2Text, hpText, artImage);  //pases arguments to BasdeCardUpate()
         attack.text = monsterCardData.attack.ToString(); //updates prefab with values from scriptable object
         cooldown.text = monsterCardData.cooldown.ToString(); //updates prefab with values from scriptable object
     }
@@ -36,7 +36,7 @@ public class MonsterCardPrefab : BaseCardPrefab
         gameController.PlayCard(this.gameObject, monsterCardData, button, audioSource);
     }
 
-    public void PlaySound()
+    public void PlaySound() //plays audio clip once
     {
         audioSource = GetComponent<AudioSource>();
         AudioClip attackSound = monsterCardData.audio1;

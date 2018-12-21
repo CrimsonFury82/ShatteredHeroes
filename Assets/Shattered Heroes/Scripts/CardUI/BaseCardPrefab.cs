@@ -12,7 +12,7 @@ public abstract class BaseCardPrefab : MonoBehaviour
 
     public Text cardNameText, ability1Text, ability2Text, hpText;
 
-    void Start()
+    void Start() //pases arguments to BasdeCardUpate()
     {
         baseCardData.BaseCardUpdate(cardNameText, ability1Text, ability2Text, hpText, artImage); //updates prefab UI text with values from scriptable object
     }

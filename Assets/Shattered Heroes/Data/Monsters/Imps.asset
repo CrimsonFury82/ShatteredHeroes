@@ -14,8 +14,8 @@ MonoBehaviour:
   cardName: Imps
   ability1: Tee he he
   ability2: 
-  hp: 1
+  hp: 2
   artSprite: {fileID: 21300000, guid: dc402cbbeee818d43ad7e98fb72866fd, type: 3}
   audio1: {fileID: 8300000, guid: c75de989fc4f51342840ee8e584cc5cb, type: 3}
-  attack: 1
+  attack: 2
   cooldown: 0

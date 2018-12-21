@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1169390408487452
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1804638915879256
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,9 +413,6 @@ MonoBehaviour:
   ability2Text: {fileID: 114525615974554972}
   hpText: {fileID: 114011278843464534}
   heroCardData: {fileID: 0}
-  artImage2: {fileID: 0}
-  artImage3: {fileID: 0}
-  artImage4: {fileID: 0}
 --- !u!114 &114396997693910986
 MonoBehaviour:
   m_ObjectHideFlags: 1

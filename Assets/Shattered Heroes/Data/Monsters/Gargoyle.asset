@@ -14,7 +14,7 @@ MonoBehaviour:
   cardName: Gargoyle
   ability1: I hate pidgeons
   ability2: 
-  hp: 2
+  hp: 3
   artSprite: {fileID: 21300000, guid: a77460d7ea53f4e4288a3d4adec93f02, type: 3}
   audio1: {fileID: 8300000, guid: 175eda1c1c4c3ff4a9ffe79762e93f43, type: 3}
   attack: 2

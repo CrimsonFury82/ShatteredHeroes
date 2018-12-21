@@ -14,8 +14,8 @@ MonoBehaviour:
   cardName: Bandit
   ability1: Bwahaha
   ability2: 
-  hp: 4
+  hp: 2
   artSprite: {fileID: 21300000, guid: 56e1d3c0f185bd04fb3a517e27254568, type: 3}
   audio1: {fileID: 8300000, guid: 185a3f0ad21999f4d96815157a7878b1, type: 3}
-  attack: 2
+  attack: 3
   cooldown: 1

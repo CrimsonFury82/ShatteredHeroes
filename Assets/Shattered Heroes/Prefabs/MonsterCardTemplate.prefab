@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1329671505641566
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1779590982241830
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
   gameController: {fileID: 0}
   button: {fileID: 114234682687611748}
   audioSource: {fileID: 0}
-  cardPlayedSound: {fileID: 8300000, guid: bb16a7dc0613391449a3459aef871f90, type: 3}
+  cardPlayedSound: {fileID: 8300000, guid: 855222bedde5b92419670076338333df, type: 3}
 --- !u!114 &114679207417804040
 MonoBehaviour:
   m_ObjectHideFlags: 1

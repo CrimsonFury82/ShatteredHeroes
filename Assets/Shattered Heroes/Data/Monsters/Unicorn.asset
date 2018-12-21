@@ -14,8 +14,8 @@ MonoBehaviour:
   cardName: Unicorn
   ability1: Neiigh
   ability2: 
-  hp: 3
+  hp: 4
   artSprite: {fileID: 21300000, guid: 1f69eb119718b4440bcd17840627a1e0, type: 3}
   audio1: {fileID: 8300000, guid: 4db057b0c1f7cfb4e83bef035b39a336, type: 3}
-  attack: 3
+  attack: 4
   cooldown: 2

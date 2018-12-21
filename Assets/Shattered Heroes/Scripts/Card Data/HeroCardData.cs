@@ -10,8 +10,8 @@ public class HeroCardData : BaseCardData
     public Sprite artSprite2, artSprite3, artSprite4;
     public AudioClip audio2, audio3, audio4;
 
-    public void HeroArt2(HeroCardPrefab hero)
+    public void HeroArtUpdate(HeroCardPrefab hero, Sprite heroSprite) //updates prefab image to image passed to it
     {
-        hero.artImage2.sprite = artSprite2;
+        hero.artImage.sprite = heroSprite;
     }
 }

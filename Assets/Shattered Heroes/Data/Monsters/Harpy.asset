@@ -14,8 +14,8 @@ MonoBehaviour:
   cardName: Harpy
   ability1: Squawk
   ability2: 
-  hp: 2
+  hp: 3
   artSprite: {fileID: 21300000, guid: b58b320fc8c588c48815e2212c9f6c20, type: 3}
   audio1: {fileID: 8300000, guid: 60bac58f56eff954b84eb0e1f6d282c8, type: 3}
-  attack: 2
+  attack: 3
   cooldown: 1

@@ -16,7 +16,7 @@ public class BaseCardData : ScriptableObject
     public AudioClip audio1;
 
     public virtual void BaseCardUpdate(Text cardNameText, Text ability1Text, Text ability2Text, Text hpText, Image artImage)
-    {
+    { //updates prefab image and UI text
         cardNameText.text = cardName;
         ability1Text.text = ability1;
         ability2Text.text = ability2;
