@@ -294,11 +294,11 @@ public class GameController : MonoBehaviour {
             }
             if (turnState == turn.Player1) //checks if currently Player 1's turn
             {
-                p1Hero.heroCardData.hp = defHero.heroCardData.hp;
+                p2Hero.heroCardData.hp = defHero.heroCardData.hp;
             }
             if (turnState == turn.Player2)
             {
-                p2Hero.heroCardData.hp = defHero.heroCardData.hp;
+                p1Hero.heroCardData.hp = defHero.heroCardData.hp;
             }
             if (defHero.heroCardData.hp <= 0) //checks if hero is dead
             {
@@ -380,14 +380,17 @@ public class GameController : MonoBehaviour {
         {
             if (p1Hero.heroCardData.hp < p2Hero.heroCardData.hp) //checks if p1 has less health
             {
+                print("P1 HP " + p1Hero.heroCardData.hp + " P2 HP " + p2Hero.heroCardData.hp);
                 GameOverMessage("Game Over, Player2 Wins");
             }
             if (p2Hero.heroCardData.hp < p1Hero.heroCardData.hp) //checks if p2 has less health
             {
+                print("P1 HP " + p1Hero.heroCardData.hp + " P2 HP " + p2Hero.heroCardData.hp);
                 GameOverMessage("Game Over, Player1 Wins");
             }
             if (p1Hero.heroCardData.hp == p2Hero.heroCardData.hp) //checks if health is tied
             {
+                print("P1 HP " + p1Hero.heroCardData.hp + " P2 HP " + p2Hero.heroCardData.hp);
                 GameOverMessage("Game Over, Tied Game");
             }
             else
@@ -399,10 +402,12 @@ public class GameController : MonoBehaviour {
         {
             if (p1Hero.heroCardData.hp <= 0) //checks if Player1 is dead
             {
+                print("P1 HP " + p1Hero.heroCardData.hp + " P2 HP " + p2Hero.heroCardData.hp);
                 GameOverMessage("Game Over, Player2 Wins");
             }
             if (p2Hero.heroCardData.hp <= 0) //checks if Player2 is dead
             {
+                print("P1 HP " + p1Hero.heroCardData.hp + " P2 HP " + p2Hero.heroCardData.hp);
                 GameOverMessage("Game Over, Player1 Wins");
             }
         }
